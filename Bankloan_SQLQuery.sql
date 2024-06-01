@@ -12,32 +12,28 @@ WHERE MONTH(issue_date) = 12;
 SELECT COUNT(id) AS Total_Applications FROM bank_loan
 WHERE MONTH(issue_date) = 11;
  
-
 --Total Funded Amount
- 
-SELECT CONCAT('£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan;
+SELECT CONCAT('Â£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan;
 
 --MTD Total Funded Amount
-SELECT CONCAT('£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan
+SELECT CONCAT('Â£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan
 WHERE MONTH(issue_date) = 12;
  
 --PMTD Total Funded Amount
-SELECT CONCAT('£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan
+SELECT CONCAT('Â£', FORMAT(SUM(loan_amount), '#,##0')) AS Total_Funded_Amount FROM bank_loan
 WHERE MONTH(issue_date) = 11;
  
-
 --Total Amount Received
-SELECT CONCAT('£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan;
+SELECT CONCAT('Â£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan;
  
 --MTD Total Amount Received
-SELECT CONCAT('£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan
+SELECT CONCAT('Â£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan
 WHERE MONTH(issue_date) = 12;
  
 --PMTD Total Amount Received
-SELECT CONCAT('£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan
+SELECT CONCAT('Â£', FORMAT(SUM(total_payment), '#,##0')) AS Total_Amount_Collected FROM bank_loan
 WHERE MONTH(issue_date) = 11;
  
-
 --Average Interest Rate
 SELECT ROUND(AVG(int_rate)*100,2) AS Avg_Int_Rate FROM bank_loan;
  
@@ -49,7 +45,6 @@ WHERE MONTH(issue_date) = 12;
 SELECT ROUND(AVG(int_rate)*100,2) AS PMTD_Avg_Int_Rate FROM bank_loan
 WHERE MONTH(issue_date) = 11;
  
-
 --Avg DTI
 SELECT ROUND(AVG(dti)*100,2) AS Avg_DTI FROM bank_loan;
  
@@ -61,13 +56,11 @@ WHERE MONTH(issue_date) = 12;
 SELECT ROUND(AVG(dti)*100,2) AS PMTD_Avg_DTI FROM bank_loan
 WHERE MONTH(issue_date) = 11;
  
-
 --GOOD LOAN ISSUED
 --Good Loan Percentage
 SELECT
     CONCAT(CAST(ROUND((COUNT(CASE WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN id END) * 100.0) / 
-	COUNT(id),2) AS DECIMAL(10,2)),' %') AS Good_Loan_Percentage
-FROM bank_loan;
+	COUNT(id),2) AS DECIMAL(10,2)),' %') AS Good_Loan_Percentage FROM bank_loan;
  
 --Good Loan Applications
 SELECT COUNT(id) AS Good_Loan_Applications FROM bank_loan
@@ -79,7 +72,7 @@ WHERE loan_status = 'Fully Paid' OR loan_status = 'Current';
  
 
 --Good Loan Amount Received
-SELECT CONCAT('£', FORMAT(SUM(total_payment), '#,##0')) AS Good_Loan_amount_received FROM bank_loan
+SELECT CONCAT('Â£', FORMAT(SUM(total_payment), '#,##0')) AS Good_Loan_amount_received FROM bank_loan
 WHERE loan_status = 'Fully Paid' OR loan_status = 'Current'
  
 
